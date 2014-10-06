@@ -86,7 +86,7 @@ class SmallSMILHandler(ContentHandler):
         print "diccionario textstream"
         print textstream
         self.etiquetas.append(textstream)
-        #print "IMPRIMO LISTA"
+
         
     def get_tags(self):
         return self.etiquetas
