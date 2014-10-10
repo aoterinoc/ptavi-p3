@@ -10,6 +10,8 @@ from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
+class KaraokeLocal (SmallSMILHandler):
+
 Elemen_Source = ['img', 'audio', 'textstream']
 
 def imprimir(lista):
@@ -45,7 +47,7 @@ if __name__ == "__main__":
 
     try:
         fichero = sys.argv[1]
-        #recurso = sys.argv[1]
+        
     except (IndexError):
         print "Usage: python karaoke.py file.smil"
         sys.exit()
