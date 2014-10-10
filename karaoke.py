@@ -10,8 +10,10 @@ from smallsmilhandler import SmallSMILHandler
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 
-def imprimir():
-    for elementoXML in karaoke.etiquetas:
+Elemen_Source = ['img', 'audio', 'textstream']
+
+def imprimir(lista):
+    for elementoXML in lista:
   
         print elementoXML['etiqueta'], 
                
@@ -26,14 +28,19 @@ def imprimir():
                 print "\t" + clave[i]+"=\""+valor[i]+"\"",
         print "" #print sin , provoca el salto de linea.
 
-def do_local():
-    for x in karaoke.etiquetas:
-        clave == "src"
-        valor = x.values()
-        for clave in karaoke.etiquetas:
-            print valor
+def do_local(lista):
 
-
+    for etiqueta in lista:
+        if etiqueta['etiqueta'] in Elemen_Source:
+            source = etiqueta["src"]
+            print source
+            if source.find("http://") != -1: #si es distinto de -1 lo he encontrado
+                os.system("wget -q " + source)
+                source = source.split("/")[-1]
+                etiqueta["src"] = source
+                
+                           
+           
 if __name__ == "__main__":
 
     try:
@@ -47,7 +54,9 @@ if __name__ == "__main__":
     parser = make_parser() #creo el parse
     karaoke = SmallSMILHandler() #creo objeto
     parser.setContentHandler(karaoke)
-    parser.parse(open('karaoke.smil')) #parsea karaoke.smil 
-    print karaoke.get_tags()
-    imprimir()
-    do_local()
+    parser.parse(open('karaoke.smil')) #parsea karaoke.smil
+    lista = karaoke.get_tags()
+    imprimir(lista)
+    do_local(lista)
+    imprimir(lista)
+
