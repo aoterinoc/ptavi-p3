@@ -26,6 +26,14 @@ def imprimir():
                 print "\t" + clave[i]+"=\""+valor[i]+"\"",
         print "" #print sin , provoca el salto de linea.
 
+def do_local():
+    for x in karaoke.etiquetas:
+        clave == "src"
+        valor = x.values()
+        for clave in karaoke.etiquetas:
+            print valor
+
+
 if __name__ == "__main__":
 
     try:
@@ -42,4 +50,4 @@ if __name__ == "__main__":
     parser.parse(open('karaoke.smil')) #parsea karaoke.smil 
     print karaoke.get_tags()
     imprimir()
-    
+    do_local()
